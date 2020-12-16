@@ -93,13 +93,13 @@
 (def input (map list* (clojure.string/split-lines (slurp "11.txt"))))
 ;; (def input (clojure.string/split-lines (slurp "11.txt")))
 
-;; (-> (iterate (partial step-seats) input)
-;;     (take-while-different)
-;;     (last)
-;;     (flatten)
-;;     (frequencies)
-;;     (get \#)
-;;     (println))
+(-> (iterate (partial step-seats) input)
+    (take-while-different)
+    (last)
+    (flatten)
+    (frequencies)
+    (get \#)
+    (println))
 
 (-> input
     (step-seats)
