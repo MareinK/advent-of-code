@@ -60,10 +60,11 @@
         diags-1 (apply concat (partition width 1 (get-diags-1 seats)))
         diags-2 (reverse (mapcat reverse (partition height 1 (get-diags-2 seats))))]
     (->> (map list rows cols diags-1 diags-2)
-         (map (partial apply concat))
-         (map (partial filter identity))
-         (partition width)
-         (map-2d frequencies))))
+        ;;  (map (partial apply concat))
+        ;;  (map (partial filter identity))
+        ;;  (partition width)
+        ;;  (map-2d frequencies)
+         )))
 
 ;; (defn seat-frequencies [check-dist seats]
 ;;   (->> (border-matrix \. seats)
@@ -93,13 +94,13 @@
 (def input (map list* (clojure.string/split-lines (slurp "11.txt"))))
 ;; (def input (clojure.string/split-lines (slurp "11.txt")))
 
-(-> (iterate (partial step-seats) input)
-    (take-while-different)
-    (last)
-    (flatten)
-    (frequencies)
-    (get \#)
-    (println))
+;; (-> (iterate (partial step-seats) input)
+;;     (take-while-different)
+;;     (last)
+;;     (flatten)
+;;     (frequencies)
+;;     (get \#)
+;;     (println))
 
 (-> input
     (step-seats)
