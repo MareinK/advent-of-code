@@ -28,7 +28,7 @@
 (defn neighbors [tile]
   (map apply-delta (repeat tile) (vals deltas)))
 
-(defn be-active [actives tile]
+(defn active? [actives tile]
   (->> (neighbors tile)
        (filter actives)
        (count)
@@ -36,7 +36,7 @@
 
 (defn step [tiles]
   (->> (set (mapcat neighbors tiles))
-       (filter (partial be-active tiles))
+       (filter (partial active? tiles))
        (set)))
 
 ;; part 2
